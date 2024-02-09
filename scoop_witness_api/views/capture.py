@@ -9,6 +9,7 @@ import validators
 from ..utils import access_check
 from ..models import Capture
 from ..utils import capture_to_dict
+from ..tasks import start_capture_process
 
 
 @current_app.route("/capture", methods=["POST"])
@@ -76,6 +77,8 @@ def capture_post():
     except Exception as err:
         current_app.logger.error(err)
         return jsonify({"error": "Could not create capture request."}), 500
+
+    start_capture_process.delay()
 
     #
     # Return info

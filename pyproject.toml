@@ -17,6 +17,8 @@ peewee = "^3.16.2"
 python = "^3.9"
 requests = "^2.31.0"
 validators = "^0.22.0"
+celery = "^5.3.6"
+redis = "^5.0.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"
